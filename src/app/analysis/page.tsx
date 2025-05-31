@@ -1,18 +1,18 @@
 "use client";
 import { useState } from "react";
-import { ProductPreview } from "./data";
-import ProductProfile from "./ui/ProductProfile";
-import WordSelector from "./ui/WordSelector";
-import useInput from "./hooks/useInput";
+import { ProductPreview } from "../data";
+import ProductProfile from "../ui/ProductProfile";
+import WordSelector from "../ui/WordSelector";
+import useInput from "../hooks/useInput";
 
 const enum LOAD_CHECK {
   INIT,
   LOADING,
   END,
   ERROR,
-}
+};
 
-export default function Home() {
+export default function AnalysisPage() {
   const [productBasicInfo, setProductBasicInfo] = useState<ProductPreview>();
   const [chosenKeywordIdx, setChosenKeywordIdx] = useState<number>(-1);
   const [chosenCategoryIdx, setChosenCategoryIdx] = useState<number>(-1);
@@ -30,18 +30,20 @@ export default function Home() {
     // if (url === '') {
     //     setLoadingStatus(LOAD_CHECK.INIT);
     // }
+
     // try {
     //     const data = await crawlProductBasicInfo(url);
     //     setProductBasicInfo(data);
     //     console.log(data);
     //     setLoadingStatus(LOAD_CHECK.END);
+        
     // } catch (err) {
     //     console.log(err);
     //     setLoadingStatus(LOAD_CHECK.ERROR);
     // }
-  };
+};
 
-  const handleStartAnalysis = async () => {
+const handleStartAnalysis = async () => {
     // const data = await startAnalysis(urlInput.value, projectNameInput.value, productNameInput.value, categoryInput.value);
     // console.log(data);
     // if (data.success) {
@@ -49,17 +51,17 @@ export default function Home() {
     // } else {
     //     alert(data.message);
     // }
-  };
+};
 
-  const changeChosenKeywordIdx = (idx: number, word: string) => {
+const changeChosenKeywordIdx = (idx: number, word: string) => {
     setChosenKeywordIdx(idx);
     productNameInput.changeValue(word);
-  };
+};
 
-  const changeChosenCategoryIdx = (idx: number, word: string) => {
+const changeChosenCategoryIdx = (idx: number, word: string) => {
     setChosenCategoryIdx(idx);
     categoryInput.changeValue(word);
-  };
+};
 
   return (
     <>
