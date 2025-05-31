@@ -25,31 +25,33 @@ export default function AnalysisPage() {
   const categoryInput = useInput("");
   const urlInput = useInput("");
 
-  const onChangeUrl = async (url: string) => {
-    // setLoadingStatus(LOAD_CHECK.LOADING);
-    // if (url === '') {
-    //     setLoadingStatus(LOAD_CHECK.INIT);
-    // }
+  // 지금은 크롤링이 어려워졌어요
+//   const onChangeUrl = async (url: string) => {
+//     setLoadingStatus(LOAD_CHECK.LOADING);
+//     if (url === '') {
+//         setLoadingStatus(LOAD_CHECK.INIT);
+//     }
 
-    // try {
-    //     const data = await crawlProductBasicInfo(url);
-    //     setProductBasicInfo(data);
-    //     console.log(data);
-    //     setLoadingStatus(LOAD_CHECK.END);
+//     try {
+//         const data = await crawlProductBasicInfo(url);
+//         setProductBasicInfo(data);
+//         console.log(data);
+//         setLoadingStatus(LOAD_CHECK.END);
         
-    // } catch (err) {
-    //     console.log(err);
-    //     setLoadingStatus(LOAD_CHECK.ERROR);
-    // }
-};
+//     } catch (err) {
+//         console.log(err);
+//         setLoadingStatus(LOAD_CHECK.ERROR);
+//     }
+// };
 
 const handleStartAnalysis = async () => {
-    // const data = await startAnalysis(urlInput.value, projectNameInput.value, productNameInput.value, categoryInput.value);
-    // console.log(data);
-    // if (data.success) {
-    //     alert('분석이 성공적으로 시작되었습니다.');
-    // } else {
-    //     alert(data.message);
+  // 지금은 크롤링이 어려워졌어요
+  // const data = await startAnalysis(urlInput.value, projectNameInput.value, productNameInput.value, categoryInput.value);
+  // console.log(data);
+  // if (data.success) {
+  //     alert('분석이 성공적으로 시작되었습니다.');
+  // } else {
+  //     alert(data.message);
     // }
 };
 
