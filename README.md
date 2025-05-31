@@ -1,36 +1,18 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+이커머스 리뷰 기반 마케팅 인사이트 추출 자동화 시스템
+---
+이 프로젝트는 성균관대학교와 기업 '메카솔루션'의 산학협력으로 개발된 '이커머스 리뷰 기반 마케팅 인사이트 추출 자동화 시스템'을 개인적으로 Next.js로 Migration한 프론트엔드 레포지토리입니다.
+사용자가 입력한 이커머스 상품 페이지의 리뷰와 검색량 데이터를 분석하여 마케팅에 활용 가능한 인사이트를 시각적으로 제공합니다.
 
-## Getting Started
+* 서비스 링크: https://review-analysis-next.vercel.app/
 
-First, run the development server:
+* 관련 레포지토리
+  * 이전 SPA 버전 (초기 개발):
+  * Frontend: https://github.com/YusungAN/review-analysis-fe 
+  * Backend: https://github.com/YusungAN/review-analysis-be
+ 
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+* 주요 기능
+  * 리뷰 데이터 분석: 상품 링크를 입력받아 리뷰를 수집하고 분석합니다. 
+  * 토픽 모델링: 리뷰 텍스트를 분석하여 핵심 토픽을 추출하고 시각화합니다.
+  * 트렌드 예측: 상품 키워드의 검색량 변화를 기반으로 미래 트렌드를 예측하고 그래프로 제공합니다. 
+  * 마케팅 인사이트 도출: 분석 결과를 종합하여 상품의 특징, 장단점 등 마케팅 전략 수립에 필요한 인사이트를 제공합니다.
