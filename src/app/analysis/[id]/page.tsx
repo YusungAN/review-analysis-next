@@ -8,9 +8,9 @@ const GraphContainer = lazy(() => import("@/app/ui/GraphContainer")); // !!!
 export default async function AnalysisItemPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
-  const { id } = params;
+  const { id } = await params;
 
   const productInfo = await getProductAnalysis(id);
   const startDateStr = productInfo.p_data.trend_start_date;
@@ -40,10 +40,7 @@ export default async function AnalysisItemPage({
         prosList={productInfo?.p_data.pros!}
         consList={productInfo?.p_data.cons!}
       />
-      <DTM
-        productID={id}
-        dtmResult={productInfo?.dtm_result!}
-      />
+      <DTM productID={id} dtmResult={productInfo?.dtm_result!} />
       <div className="w-[calc(100%-50px)] h-[650px] bg-white rounded-[20px] shadow-[0px_0px_5px_rgba(0,0,0,0.1)] mt-[10px] mb-[10px] flex flex-col justify-center items-center">
         <div className="text-[1.75rem] font-bold overflow-x-auto">
           트렌드 예측 그래프
@@ -55,7 +52,13 @@ export default async function AnalysisItemPage({
           </div>
         )}
         <div className="w-full flex flex-col justify-center items-center pt-[25px] h-[80%]">
-          <Suspense fallback={<div className="text-gray-300 text-[2rem] font-bold">로딩중...</div>}>
+          <Suspense
+            fallback={
+              <div className="text-gray-300 text-[2rem] font-bold">
+                로딩중...
+              </div>
+            }
+          >
             <GraphContainer
               trend={[
                 productInfo?.p_data.trend!,
