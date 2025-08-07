@@ -1,9 +1,9 @@
 import { getProductAnalysis } from "@/app/utils/db";
-import BasicTopics from "@/app/ui/BasicTopics";
-import DTM from "@/app/ui/DTM";
 import { lazy, Suspense } from "react";
 
-const GraphContainer = lazy(() => import("@/app/ui/GraphContainer")); // !!!
+const GraphContainer = lazy(() => import("@/app/ui/GraphContainer"));
+const BasicTopics = lazy(() => import("@/app/ui/BasicTopics"));
+const DTM = lazy(() => import("@/app/ui/DTM"));
 
 export default async function AnalysisItemPage({
   params,
@@ -36,11 +36,23 @@ export default async function AnalysisItemPage({
       <div className="text-[2rem] font-bold mt-[50px]">
         '{productInfo?.p_data.product_name}' 상품의 분석 결과입니다.
       </div>
-      <BasicTopics
-        prosList={productInfo?.p_data.pros!}
-        consList={productInfo?.p_data.cons!}
-      />
-      <DTM productID={id} dtmResult={productInfo?.dtm_result!} />
+      <Suspense
+        fallback={
+          <div className="text-gray-300 text-[2rem] font-bold">로딩중...</div>
+        }
+      >
+        <BasicTopics
+          prosList={productInfo?.p_data.pros!}
+          consList={productInfo?.p_data.cons!}
+        />
+      </Suspense>
+      <Suspense
+        fallback={
+          <div className="text-gray-300 text-[2rem] font-bold">로딩중...</div>
+        }
+      >
+        <DTM productID={id} dtmResult={productInfo?.dtm_result!} />
+      </Suspense>
       <div className="w-[calc(100%-50px)] h-[650px] bg-white rounded-[20px] shadow-[0px_0px_5px_rgba(0,0,0,0.1)] mt-[10px] mb-[10px] flex flex-col justify-center items-center">
         <div className="text-[1.75rem] font-bold overflow-x-auto">
           트렌드 예측 그래프
