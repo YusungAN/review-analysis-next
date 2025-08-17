@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { getProjectList } from "@/app/utils/db";
 import RefreshIcon from "../../../../public/assets/refresh.svg";
+import { lazy, Suspense } from "react";
+
+const ProjectListComponent = lazy(() => import("@/app/ui/ProjectListComponent"));
 
 export default async function ProjectListPage() {
   const projectList = await getProjectList();
@@ -17,24 +20,17 @@ export default async function ProjectListPage() {
             <div className="w-[30%] text-center">id</div>
             <div className="w-[70%] text-center">프로젝트 이름</div>
           </div>
-          {projectList === undefined ? (
-            <div className="w-full h-[50px] text-[1.2rem] font-bold text-[rgb(125,125,125)] text-center leading-[50px]">
-              로딩중..
-            </div>
-          ) : (
-            projectList.map((info, idx) => {
-              return (
-                <Link
-                  key={idx}
-                  href={`/analysis/${info.id}`}
-                  className="w-[95%] h-[50px] leading-[50px] text-base text-black flex border-b border-black hover:bg-[#f9f9f9]"
-                >
-                  <div className="w-[30%] text-center">{info.id}</div>
-                  <div className="w-[70%] text-center">{info.project_name}</div>
-                </Link>
-              );
-            })
-          )}
+          <Suspense
+            fallback={
+              <div className="w-full h-[200px] flex flex-col justify-center items-center">
+                <div className="text-gray-300 text-[1.5rem] font-bold">
+                  로딩중...
+                </div>
+              </div>
+            }
+          >
+            <ProjectListComponent projectList={projectList} />
+          </Suspense>
         </div>
 
         <div className="flex items-center">
@@ -45,11 +41,7 @@ export default async function ProjectListPage() {
             width={30}
             height={30}
             className="cursor-pointer mt-[80px] ml-[10px]"
-            // onClick={handleGetLists}
           />
-          {/* <div className="mt-[85px] ml-[10px]">
-            마지막 업데이트: <span>{updateSec}</span>초 전
-          </div> */}
         </div>
         <div className="w-[calc(100%-50px)] bg-white rounded-[20px] shadow-[0px_0px_5px_rgba(0,0,0,0.1)] pt-[20px] pb-[20px] flex flex-col items-center">
           <div className="w-[95%] h-[30px] text-[1.1rem] font-bold flex border-b-2 border-black">

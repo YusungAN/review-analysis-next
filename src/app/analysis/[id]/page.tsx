@@ -38,7 +38,9 @@ export default async function AnalysisItemPage({
       </div>
       <Suspense
         fallback={
-          <div className="text-gray-300 text-[2rem] font-bold">로딩중...</div>
+          <div className="w-[calc(100%-50px)] bg-white rounded-[20px] shadow-[0px_0px_5px_rgba(0,0,0,0.1)] mt-[10px] flex flex-col justify-center items-center h-[300px]">
+            <div className="text-gray-300 text-[2rem] font-bold">로딩중...</div>
+          </div>
         }
       >
         <BasicTopics
@@ -48,7 +50,9 @@ export default async function AnalysisItemPage({
       </Suspense>
       <Suspense
         fallback={
-          <div className="text-gray-300 text-[2rem] font-bold">로딩중...</div>
+          <div className="w-[calc(100%-50px)] bg-white rounded-[20px] shadow-[0px_0px_5px_rgba(0,0,0,0.1)] mt-[10px] flex flex-col justify-center items-center h-[400px]">
+            <div className="text-gray-300 text-[2rem] font-bold">로딩중...</div>
+          </div>
         }
       >
         <DTM productID={id} dtmResult={productInfo?.dtm_result!} />
@@ -66,8 +70,10 @@ export default async function AnalysisItemPage({
         <div className="w-full flex flex-col justify-center items-center pt-[25px] h-[80%]">
           <Suspense
             fallback={
-              <div className="text-gray-300 text-[2rem] font-bold">
-                로딩중...
+              <div className="w-full h-full flex flex-col justify-center items-center">
+                <div className="text-gray-300 text-[2rem] font-bold">
+                  로딩중...
+                </div>
               </div>
             }
           >
